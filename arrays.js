@@ -27,7 +27,7 @@ let mappedList = data.map(item => {
     });
 });
 
-// Could also do this, without the return()
+// Could also do this, without the return(), which is implied here
 mappedList = data.map(item => (
   {
     id: item.objectId,
