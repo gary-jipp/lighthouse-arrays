@@ -1,37 +1,33 @@
-// Common Array methods
+// More  Array methods
 
 // Define a simple array
-const items = [1, 2, 3];
+const items = [1, 2, 3, 4, 5, "waldo", 6, 7];
 
-// Add a new item to the end
-items.push("new last Item");
-// Note: Arrays are just JavaScript Objects. Each item can be anything!
+// Find something in an array
 
-console.log("After adding new last item");
-for (const item of items) {
-  console.log("item:", item);
-}
+// 1. expanded format
+const findCallBack = function (item) {
+  return item === "waldo";
+};
 
-// Add a new item to the beginning
-items.unshift("new first item");
+let found = items.find(findCallBack);
+console.log("Named find callback: ", found);
 
-console.log("\nAfter adding new first item");
-for (const item of items) {
-  console.log("item:", item);
-}
 
-// Remove from the bottom
-let item = items.pop();
-console.log("\nLast Item: ", item);
-console.log("After popping last item");
-for (const item of items) {
-  console.log("item:", item);
-}
+// 2. anonymous function
+found = items.find(function (item) {
+  return item === "waldo";
+});
+console.log("Anonymous find callback: ", found);
 
-// Remove from the top
-item = items.shift();
-console.log("\nFirst Item: ", item);
-console.log("After popping first item");
-for (const item of items) {
-  console.log("item:", item);
-}
+// 3. ES6 Arrow function
+found = items.find(item => { return item === "waldo"; });
+console.log("ES6 find callback ( with {} ): ", found);
+
+// Without the {} we don't even need a return
+found = items.find(item => item === "waldo");
+console.log("ES6 find callback ( without {} ): ", found);
+
+// Arrow functions are great for anonymous functions.  We generally avoid 
+// for named functions but some peiple insist on making everything an arrow function
+// I guess everyone has their own taste
