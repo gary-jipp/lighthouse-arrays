@@ -1,47 +1,37 @@
-// Array Basics & Iterating
+// Common Array methods
 
-// Define a simple array (most common form)
+// Define a simple array
 const items = [1, 2, 3];
 
-// We could also do it this way.  
-// const items = new Array(1,2,3);
+// Add a new item to the end
+items.push("new last Item");
+// Note: Arrays are just JavaScript Objects. Each item can be anything!
 
-// Add something to the array
-items.push(4);
-const item = items.pop();
-
-
-// We could loop an array like this, old-school c-style loop
-console.log("Iterating with c-style loop, length:", items.length);
-
-for (let i = 0; i < items.length; i++) {
-  const item = items[i];
-  console.log("item", item);
+console.log("After adding new last item");
+for (const item of items) {
+  console.log("item:", item);
 }
 
+// Add a new item to the beginning
+items.unshift("new first item");
 
-// But we almost never do that in JavaScript. Instead we almost always use 'for-of'
-// Unless we have a really good reason to need the "i"
-console.log("\nIterating with for-of, length:", items.length);
-
+console.log("\nAfter adding new first item");
 for (const item of items) {
-  console.log("item", item);
+  console.log("item:", item);
 }
 
-
-// There's also forEach(), which is less common but has its uses
-console.log("\nIterating with forEach. length:", items.length);
-
-items.forEach(item => {
-  console.log("item", item);
-});
-
-
-// Empty an array by setting its length to zero
-items.length = 0;
-
-console.log("\nIterating empty array, length:", items.length);
-
+// Remove from the bottom
+let item = items.pop();
+console.log("\nLast Item: ", item);
+console.log("After popping last item");
 for (const item of items) {
-  console.log("no item", item);
+  console.log("item:", item);
+}
+
+// Remove from the top
+item = items.shift();
+console.log("\nFirst Item: ", item);
+console.log("After popping first item");
+for (const item of items) {
+  console.log("item:", item);
 }
