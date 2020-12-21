@@ -1,5 +1,5 @@
 // Find something in an array
-// The map() function is possibly the most useful for clinht-side development
+// The map() function turns one array into another
 
 // Let's say we get an array of objects back from a REST service
 const data = [
