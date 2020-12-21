@@ -1,4 +1,4 @@
-// More  Array methods
+// Find something in an array
 
 // Define a simple array
 const items = [1, 2, 3, 4, 5, "waldo", 6, 7];
