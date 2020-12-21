@@ -1,33 +1,39 @@
 // Find something in an array
+// The map() function is possibly the most useful for clinht-side development
 
-// Define a simple array
-const items = [1, 2, 3, 4, 5, "waldo", 6, 7];
+// Let's say we get an array of objects back from a REST service
+const data = [
+  { objectId: 1, title: "Google", url: "http://www.google.com" },
+  { objectId: 2, title: "Yahoo", url: "http://www.yahoo.com" },
+  { objectId: 3, title: "FaceBook", url: "http://www.facebook.com" },
+  { objectId: 4, title: "Twitter", url: "http://www.twitter.com" },
+];
 
-// Find something in an array
+// but what we really want is an array that looks like this
+const list = [
+  { id: 1, name: "Google", href: "http://www.google.com" },
+  { id: 2, name: "Yahoo", href: "http://www.yahoo.com" },
+  { id: 3, name: "FaceBook", href: "http://www.facebook.com" },
+  { id: 4, name: "Twitter", href: "http://www.twitter.com" },
+];
 
-// 1. expanded format
-const findCallBack = function (item) {
-  return item === "waldo";
-};
-
-let found = items.find(findCallBack);
-console.log("Named find callback: ", found);
-
-
-// 2. anonymous function
-found = items.find(function (item) {
-  return item === "waldo";
+// The map() function is made exactly for this
+let mappedList = data.map(item => {
+  return (
+    {
+      id: item.objectId,
+      name: item.title,
+      href: item.url
+    });
 });
-console.log("Anonymous find callback: ", found);
 
-// 3. ES6 Arrow function
-found = items.find(item => { return item === "waldo"; });
-console.log("ES6 find callback ( with {} ): ", found);
+// Could also do this, without the return()
+mappedList = data.map(item => (
+  {
+    id: item.objectId,
+    name: item.title,
+    href: item.url
+  })
+);
 
-// Without the {} we don't even need a return
-found = items.find(item => item === "waldo");
-console.log("ES6 find callback ( without {} ): ", found);
-
-// Arrow functions are great for anonymous functions.  We generally avoid 
-// for named functions but some peiple insist on making everything an arrow function
-// I guess everyone has their own taste
+console.log(JSON.stringify(mappedList, null, 2));
