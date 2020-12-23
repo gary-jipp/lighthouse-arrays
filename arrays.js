@@ -1,39 +1,10 @@
-// Find something in an array
-// The map() function turns one array into another
 
-// Let's say we get an array of objects back from a REST service
-const data = [
-  { objectId: 1, title: "Google", url: "http://www.google.com" },
-  { objectId: 2, title: "Yahoo", url: "http://www.yahoo.com" },
-  { objectId: 3, title: "FaceBook", url: "http://www.facebook.com" },
-  { objectId: 4, title: "Twitter", url: "http://www.twitter.com" },
-];
+// Simple array
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+const string = "12345678";
 
-// but what we really want is an array that looks like this
-const list = [
-  { id: 1, name: "Google", href: "http://www.google.com" },
-  { id: 2, name: "Yahoo", href: "http://www.yahoo.com" },
-  { id: 3, name: "FaceBook", href: "http://www.facebook.com" },
-  { id: 4, name: "Twitter", href: "http://www.twitter.com" },
-];
+// slice(-1) gives us the last char of a array -> new array
+console.log(array.slice(-1));
 
-// The map() function is made exactly for this
-let mappedList = data.map(item => {
-  return (
-    {
-      id: item.objectId,
-      name: item.title,
-      href: item.url
-    });
-});
-
-// Could also do this, without the return(), which is implied here
-mappedList = data.map(item => (
-  {
-    id: item.objectId,
-    name: item.title,
-    href: item.url
-  })
-);
-
-console.log(JSON.stringify(mappedList, null, 2));
+// slice(-1) gives us the last char of a string -> new string
+console.log(string.slice(-1));
